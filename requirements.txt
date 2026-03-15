@@ -1,0 +1,25 @@
+# gui
+streamlit
+python-dotenv
+gitpython
+
+# LangChain
+langchain
+langchain-community
+langchain-core
+langchain-classic
+langchain-text-splitters
+
+# Model + embedding
+langchain-google-genai
+langchain-huggingface
+sentence-transformers
+tokenizers
+
+# db
+langchain-chroma
+chromadb
+
+# parser
+tree-sitter
+tree-sitter-languages

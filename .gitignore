@@ -1,0 +1,6 @@
+code_index
+chunking.ipynb
+./data
+.env.example
+src/main.py
+src/__pycache__
