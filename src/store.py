@@ -14,11 +14,11 @@ def create_texts(docs):
     return texts
 
 llm = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5")
-def build_collection(texts):
+def build_collection(texts, db_path):
     vector_store = Chroma.from_documents(
         documents=texts,
         embedding=llm,
-        persist_directory="../db/code_index",
+        persist_directory=db_path,
         collection_name="repo"
     )
     print(f"Success! Indexed {vector_store._collection.count()} code snippets.")

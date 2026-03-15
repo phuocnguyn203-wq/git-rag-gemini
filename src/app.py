@@ -3,6 +3,11 @@ import os
 from loader import load_repo, clone_repo
 from store import create_texts, build_collection
 from brain import answer_question
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "data"
+DB_PATH = BASE_DIR / "db"
 
 st.set_page_config(page_title="Code RAG Explorer", page_icon="💻")
 st.title("🚀 AI Code RAG Explorer")
@@ -21,10 +26,10 @@ with st.sidebar:
     if st.button("Index Repository"):
         if git_link:
             with st.spinner("Cloning Repository..."):
-                clone_repo(git_link)
+                clone_repo(git_link, local_dir=DATA_PATH/"repo")
                 docs = load_repo()
                 texts = create_texts(docs)
-                st.session_state.vector_store = build_collection(texts)
+                st.session_state.vector_store = build_collection(texts, DB_PATH)
                 st.session_state.repo_indexed = True
                 st.success("✅ Repository indexed!")
         else:
