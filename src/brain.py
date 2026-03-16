@@ -2,7 +2,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
-MODEL = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0)
+import os
+api_key = os.environ.get("GOOGLE_API_KEY", none)
+MODEL = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, api_key=api_key)
 
 
 def answer_question(question, vector_store, llm=MODEL, k=15):
