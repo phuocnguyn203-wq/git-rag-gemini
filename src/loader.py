@@ -21,9 +21,9 @@ def clone_repo(repo_url, local_dir):
         print(f"An error occurred: {e}")
         return None
 
-def load_repo():
+def load_repo(repo_path):
     loader = GenericLoader.from_filesystem(
-        "../data/repo",
+        repo_path,
         glob="**/*.py",
         suffixes=[".py"],
         parser=LanguageParser(language=Language.PYTHON, parser_threshold=500) #type: ignore

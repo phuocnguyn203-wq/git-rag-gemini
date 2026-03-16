@@ -27,7 +27,7 @@ with st.sidebar:
         if git_link:
             with st.spinner("Cloning Repository..."):
                 clone_repo(git_link, local_dir=DATA_PATH/"repo")
-                docs = load_repo()
+                docs = load_repo(DATA_PATH)
                 texts = create_texts(docs)
                 st.session_state.vector_store = build_collection(texts, DB_PATH)
                 st.session_state.repo_indexed = True
