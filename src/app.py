@@ -43,9 +43,9 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("Hỏi tôi về code trong repo này..."):
+if prompt := st.chat_input("Ask me about code in this repo..."):
     if not st.session_state.repo_indexed:
-        st.warning("Vui lòng nạp Repository ở thanh bên trái trước!")
+        st.warning("You haven't enter repository!")
     else:
 
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -54,7 +54,7 @@ if prompt := st.chat_input("Hỏi tôi về code trong repo này..."):
 
 
         with st.chat_message("assistant"):
-            with st.spinner("Gemini đang đọc code..."):
+            with st.spinner("Reading code ..."):
 
                 answer = answer_question(prompt, st.session_state.vector_store)
                 st.markdown(answer)
