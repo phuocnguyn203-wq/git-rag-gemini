@@ -3,7 +3,7 @@ from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 import os
-api_key = os.environ.get("GOOGLE_API_KEY", none)
+api_key = os.environ.get("GOOGLE_API_KEY", " ")
 MODEL = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0, api_key=api_key)
 
 
